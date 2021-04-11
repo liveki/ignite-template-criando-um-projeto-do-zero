@@ -44,13 +44,7 @@ export default function Home({ postsPagination }: HomeProps) {
         const newPosts = data.results.map(post => {
           return {
             uid: post.uid,
-            first_publication_date: format(
-              new Date(post.first_publication_date),
-              "dd MMM yyyy",
-              {
-                locale: ptBR,
-              }
-            ),
+            first_publication_date: post.first_publication_date,
             data: {
               title: post.data.title,
               subtitle: post.data.subtitle,
@@ -70,6 +64,8 @@ export default function Home({ postsPagination }: HomeProps) {
         <title>Home | Spacetraveling</title>
       </Head>
 
+      <Header />
+
       <main className={`${styles.container} ${commonStyles.contentContainer}`}>
         {posts.map(post => (
           <Link href={`/post/${post.uid}`} key={post.uid}>
@@ -80,7 +76,13 @@ export default function Home({ postsPagination }: HomeProps) {
               <ul className={commonStyles.postDescription}>
                 <li>
                   <FiCalendar size={20} />
-                  <small>{post.first_publication_date}</small>
+                  <small>{format(
+                    new Date(post.first_publication_date),
+                    "dd MMM yyyy",
+                    {
+                      locale: ptBR,
+                    }
+                  )}</small>
                 </li>
                 <li>
                   <FiUser size={20} />
@@ -116,13 +118,7 @@ export const getStaticProps: GetStaticProps = async () => {
   const results = postsResponse.results.map(post => {
     return {
       uid: post.uid,
-      first_publication_date: format(
-        new Date(post.first_publication_date),
-        "dd MMM yyyy",
-        {
-          locale: ptBR,
-        }
-      ),
+      first_publication_date: post.first_publication_date,
       data: {
         title: post.data.title,
         subtitle: post.data.subtitle,
