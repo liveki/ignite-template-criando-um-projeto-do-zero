@@ -1,1 +1,50 @@
-// TODO
+.container {
+  margin: 4rem auto 0;
+
+  display: flex;
+  flex-direction: column;
+  
+  a {
+    strong {
+      font-size: 1.75rem;
+      transition: color 0.2s;
+
+    }
+    
+    p {
+      margin-top: 0.5rem;
+    }
+    
+    ul {
+      margin-top: 1.562rem;
+    }
+
+    &:hover strong {
+      color: var(--pink-100);
+    }
+  }
+  
+  a + a {
+    margin-top: 3.125rem;
+  }
+
+}
+
+.button {
+  color: var(--pink-100);
+  font-weight: 600;
+  font-size: 1.125rem;
+  background-color: transparent;
+  border: 0;
+
+  display: flex;
+  width: max-content;
+
+  margin-top: 4.125rem;
+
+  transition: filter 0.2s;
+
+  &:hover {
+    filter: brightness(0.8);
+  }
+}
